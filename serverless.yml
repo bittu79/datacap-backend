@@ -1,0 +1,53 @@
+#Serverless Configurations!
+service: skeleton-nodejs-serverless
+
+provider:
+  name: aws
+  runtime: nodejs14.x # set node.js runtime
+  lambdaHashingVersion: 20201221
+  memorySize: 1024 # set the maximum memory of the Lambdas in Megabytes
+  timeout: 30 # the timeout is 10 seconds (default is 6 seconds)
+  stage: ${opt:stage, 'local'} # setting the env stage to dev, this will be visible in the routes
+  region: ap-south-1
+  environment:
+    DB_STRING: ${file(./config.${self:provider.stage}.json):DB_STRING}
+    DB_NAME: ${file(./config.${self:provider.stage}.json):DB_NAME}
+    ENV: ${file(./config.${self:provider.stage}.json):ENV}
+
+plugins:
+  - serverless-offline
+  - serverless-prune-plugin
+  - serverless-disable-functions
+
+custom:
+  prune:
+    automatic: true
+    includeLayers: true
+    number: 3
+
+functions:
+  server:
+    handler: server.run # point to exported create function in handler.js
+    events:
+      - http: ANY /
+      - http: 'ANY /{proxy+}'
+  app:
+    handler: server.run
+    events:
+      - http: 'ANY /app/{proxy+}'
+  admin:
+    handler: server.run
+    events:
+      - http: 'ANY /admin/{proxy+}'
+  scheduler-one:
+    handler: scheduler.schedulerOne
+    enabled: ${file(./config.${self:provider.stage}.json):SCHEDULER_ONE}
+    timeout: 600
+    events:
+      - schedule: cron(0/1 * * * ? *)
+  scheduler-two:
+    handler: scheduler.schedulerTwo
+    enabled: ${file(./config.${self:provider.stage}.json):SCHEDULER_TWO}
+    timeout: 600
+    events:
+      - schedule: cron(0/1 * * * ? *)

@@ -1,0 +1,8 @@
+{
+	"environment": "prod",
+    "DB_STRING":"mongodb+srv://skeleton-nodejs-serverless:nvVrtb11X626Ek2KjD@cluster0skeleton-nodejs-serverless.yq6vc.mongodb.net?retryWrites=true&w=majority",
+    "DB_NAME":"skeleton-nodejs-serverless-prod",
+    "SCHEDULER_ONE": false,
+    "SCHEDULER_TWO": false,
+    "ENV":"prod"
+}
