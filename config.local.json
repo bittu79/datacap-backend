@@ -1,7 +1,6 @@
 {
 	"environment": "local",
-    "DB_STRING":"mongodb+srv://abhishek:asdf123@cluster0.lic376b.mongodb.net/c?retryWrites=true&w=majority",
-    "DB_NAME":"sample_training",
+    "DB_STRING":"mongodb+srv://Reshab:Reshab@cluster0.aa1ij.mongodb.net?retryWrites=true&w=majority",
     "SCHEDULER_ONE": false,
     "SCHEDULER_TWO": false,
     "ENV":"local"

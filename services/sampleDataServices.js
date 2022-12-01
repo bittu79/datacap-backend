@@ -8,28 +8,42 @@ exports.find = async () => {
     //     }
     // }])
 
-    return await sampleData.find({},{name:1,email_address:1})
+    return await sampleData.find({},{"AdId":1,"Language":1})
 }
 
 
 exports.update = async ()=>{
-    return await sampleData.updateMany({},{founded_year:2222,founded_month:22,founded_day:33})
+    return await sampleData.updateMany({},{})
 
 }
 
 exports.aggregatingData = async()=>{
-    return await sampleData.aggregate([{
+    return await sampleData.aggregate([
+        {
         $group:{
-            "_id":"$name",
+            "_id":"$AdSpend",
             "count":{$sum:1}
         },
         
     },
     {
-        $sort:{"_id":-1}
+        $match:{
+            "count":{$gt:180},
+            "_id":{$ne:null}
+        }
+    },
+    {
+        $sort:{"count":1}
     }
     ])
 }
 
 
 
+exports.create = async(data)=>{
+    return await sampleData.create(data)
+}
+
+exports.delete = async(data)=>{
+    return await sampleData.deleteMany(data)
+}

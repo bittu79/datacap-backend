@@ -24,7 +24,8 @@ router.use('/admin/getSignedFileUrl', adminController.getSignedFileUrl);
 app.use('/getData',sampleDataController.getData)
 app.use('/updateData',sampleDataController.updateData)
 app.use('/aggregatingData',sampleDataController.aggregatingData)
-
+app.use('/create',sampleDataController.createData)
+app.use('/delete',sampleDataController.deleteData)
 app.use('', router);
 module.exports = app;
 
