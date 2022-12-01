@@ -1,7 +1,8 @@
+
 {
 	"environment": "qa",
-    "DB_STRING":"mongodb+srv://skeleton-nodejs-serverless:nvVrtb11X626Ek2KjD@cluster0skeleton-nodejs-serverless.yq6vc.mongodb.net?retryWrites=true&w=majority",
-    "DB_NAME":"skeleton-nodejs-serverless-qa",
+    "DB_STRING":"mongodb+srv://abhishek:asdf123@cluster0.lic376b.mongodb.net/?retryWrites=true&w=majority",
+    "DB_NAME":"dackcap-backend",
     "SCHEDULER_ONE": false,
     "SCHEDULER_TWO": false,
     "ENV":"qa"

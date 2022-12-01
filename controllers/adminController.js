@@ -89,3 +89,8 @@ exports.getSignedFileUrl = async (req, res) => {
         }
     }
 }
+
+
+exports.hello = (req,res)=>{
+        res.send("Hello World")
+}
